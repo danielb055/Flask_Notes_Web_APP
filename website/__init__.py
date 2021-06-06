@@ -1,3 +1,4 @@
+from website.models import User
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
@@ -19,10 +20,10 @@ def create_app():
     db.init_app(app)
     
     from .views import views
-    # from .auth import auths
+    from .auths import auths
     
     app.register_blueprint(views, url_prefix='/')
-    # app.register_blueprint(auths, url_prefix='/')
+    app.register_blueprint(auths, url_prefix='/')
     
     
     create_database(app)
